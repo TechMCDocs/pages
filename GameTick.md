@@ -2,7 +2,7 @@
 title: Game Tick
 description: All the information about the tick phases
 ---
-
+{% include subpages.html %}
 
 # tick
 
