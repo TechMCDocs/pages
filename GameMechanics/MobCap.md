@@ -5,7 +5,7 @@ description: Description of the mob caps
 
 # mob caps
 
-## What is the Mob Cap?
+## Description of the Mob Cap
 The mob cap is an essential part of how Minecraft's mob spawning algorithm works. The mob cap serves as a limit on how many mobs can exist at once within your world. Each category of mobs has its own mobcap, which is calculated by the chunks that are currently being loaded in any given dimension.
 Categories:
 - Hostile Mob Cap (Constant - 70)
@@ -21,7 +21,7 @@ mobCap = constant + (chunksInRange / 289)
 Due to the number of chunks in range on single player being fixed to 289 (regardless of view distance), the caps on single player worlds are always fixed at the constant values above. On multiplayer servers, the chunks in range increase as the players spread out further. By default, players in spectator mode contribute to the mob cap (since 1.13), however, this can be toggled using the `spectatorsGenerateChunks` gamerule.
 
 ![mobspawningrange](https://cdn.discordapp.com/attachments/804010832467984415/817074344781545472/801.png)
-## How does the Mob Cap work?
+## Mob Cap mechanics
 Each dimension has its own mob cap that is calculated using the method described above. Every tick, a check is made on the mobcap. If the current list of entities per category matches or exceeds the current cap the spawning attempts are stopped for that category. New monsters will not spawn outside of the 128m radius around the player (since 1.13), but any mobs that end up outside of that will despawn instantly. In 1.12 monsters would still spawn in 15x15 chunks around the player, but they would despawn after 1 gametick of being alive.
 ### Exceptions
 The following hostile mobs count towards the mob cap but do not despawn and as such can be used in mob switches:
