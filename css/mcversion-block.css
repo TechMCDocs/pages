@@ -1,0 +1,43 @@
+.version-all {
+    border-color: darkred;
+    border-width: 1px;
+    border-style: dotted;
+}
+:host(.applied) .version-all {
+    border-color: green;
+}
+
+:host {
+    margin-top: 1em;
+    display: block;
+}
+
+:host(.disapplied) {
+    display: none;
+}
+
+.version-box {
+    border-color: darkred;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    background-color: pink;
+    color: darkred;
+    padding: 2px;
+    position: relative;
+    top: -1em;
+    margin-left: 1em;
+    display: inline;
+    font-size: 0.75em;
+    text-align: right;
+}
+:host(.applied) .version-box {
+    border-color: green;
+    background-color: lightgreen;
+    color: green;
+}
+
+.version-content {
+    margin-top: -0.75em;
+    margin-left: 2px;
+}
