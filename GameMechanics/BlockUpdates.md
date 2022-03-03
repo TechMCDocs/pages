@@ -1,4 +1,5 @@
 
+
 ---
 title: Block updates and update detectors
 description: Description and usage of block updates and update detectors
@@ -16,42 +17,43 @@ In the code block updates are a call that execute a function specific to the blo
 To make a block update detector you may simply place a sticky piston facing up, with a single slime block on top of the piston and a redstone block on top of the slime block. Then when a block update occurs on the piston it will extend and then retract unless further updated.
 
 ## Types of updates:
-1. Block updates, aka Neighbor changed updates, redstone updates, sometimes just "updates":
+### Block updates, aka Neighbor changed updates, redstone updates, sometimes just "updates":
 Most of the time they are used to update a block when their received power can potentially change
-What creates Block Updates?
+**Block Updates creation:**
 - A block going from being one block to another (By a player placing a block in a replaceable location, by a fill command, by falling_block entity hitting the ground or a gravity block on tile tick deciding to fall, by trees setting blocks, changing a block into a different block, air being replaced by Moving_piston, a dispenser removing or placing a liquid or fire)
 - Placing and removing of redstone components and rails (such as by a player or by a piston, including converting it to Moving_piston) to wherever they could power or for rails around the block they're on and themself. This makes it so that nondirect neighbors to the placed component adjust themselves properly
 - Some components changing state, including but not limited to powered rails becoming powered (around the block they're on, themself and if sloped around the block above), mobs setting the trigger for pressure plates and tripwire, repeaters on changing their power or their delay, comparators on having a different input or changing their mode, note blocks and bells on changing power (1.13+), and redstone dust on changing its power level, bubble columns being broken or created, scaffolding changing its distance, or a waterlogged block no longer being waterlogged
 - A tile tick being executed and sending updates despite no state being changed, with tripwires and comparators
-- What can Block Updates do?
-On receiving a block update, blocks may
--Change state (trapdoors, rails, droppers, ect.)
--Break/remove themself (Rails, redstone wire, repeaters, tnt, ect.)
--Schedule tick if it should change state (repeaters, comparators, ect.)
--Schedule tick (Liquids)
 
-2. State update, observer update, shape update, post placement (pp) update:
+**Possible action of block updates:**
+On receiving a block update, blocks may
+- Change state (trapdoors, rails, droppers, ect.)
+- Break/remove themself (Rails, redstone wire, repeaters, tnt, ect.)
+- Schedule tick if it should change state (repeaters, comparators, ect.)
+- Schedule tick (Liquids)
+
+### State update, observer update, shape update, post placement (pp) update:
 These are used to handle blocks reacting to other blocks in some non redstone ways.
-What creates State updates?
+**State updates creation:**
 Typically, a block changing state (as can be seen on the right side of the debug menu when looking at a block), sends state updates. This is with exceptions: blocks generated, loaded by chunks, sticky piston heads being removed while retracting, moving powered observer turning into block and other that can be found here: https://bugs.mojang.com/browse/MC-107664 .
 While most of the blocks that send state updates also send block updates, some components such as trapdoors do not.
 Redstone dust sends state updates diagonally adjacent in some conditions, but will not trigger observers in that location.
-What can state updates do?
+**Possible action of block updates:**
 - Change state (walls, redstone dust, repeaters's locked state, concrete into concrete powder)
 - Break/remove self (carpet, coral, nether_portal, basically non redstone blocks supported by a surface)
 - Schedule ticks (falling blocks, liquids, scaffolding, leaves)
 State updates have some properties regarding the direction of source. For the many non redstone supported blocks, they need an update from the surface they're on to be updated. 
 Repeaters for locking and redstone dust can be updated from multiple directions, snow and others can be updated from any direction.
 
-3. Comparator updates
+### Comparator updates
 These are used to update comparators without sending block updates, although comparators do respond to block updates as well.
-What creates Comparator updates?
+**Comparator updates creation:**
 A composter or cauldron changing fill level
 Changes in what is within an inventory
 A hopper trying to pull items, or a detector rail which is colliding with an entity
 Comparator updates can be detected only with a comparator, and only if the comparator is horizontally adjacent or 1 block horizontally away with a conductive block between the relative component 
 
-## How do we detect updates?
+## Block update detection
 A block which is in a state where it will react to block updates is called "Budded". BUDs are redstone contraptions which react to block updates and reset after receiving block updates. There are circumstances which will lead to a block being budded which are not practical to be reset and are not addressed here.
 1. For solely block updates:
 Examples:
