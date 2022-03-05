@@ -64,7 +64,7 @@ The list is as follows:
    13. pigstep (post-1.16 only)
    14. otherside (post-1.18 only)
 6. Cakes
-A cake has a maximum value of 14, but decreases by two levels for each bite consumed (i.e. `signal_strength = 14 - 2 * #bites`).
+A cake has a maximum value of 14, but decreases by two levels for each bite consumed (i.e. `signal_strength = 14 - 2 * bites_taken`).
 7. Cauldrons
 With water or snow*, the output represents the fill level, which can be in the range [0,3]. Lava cauldrons will always output one (post-1.17 only).
 8. Composters
