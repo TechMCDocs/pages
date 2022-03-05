@@ -70,7 +70,7 @@ With water or snow*, the output represents the fill level, which can be in the r
 8. Composters
 The output represents the fill level, which can be in the range [0,8]. Note that level 7 is unstable and will transition to level 8 after exactly one second (20 game ticks) after level 7 was reached.
 9. Lecterns
-The output represents which page the book is on as a fraction of 15, where the first page is 0 and the last is 15. The signal strength is precisely `(page_index/max(1,total_pages-1)) * 15`.
+The output represents which page the book is on as a fraction of 15, where the first page is 0 and the last is 15. The signal strength is precisely `(page_index / max(1, total_pages - 1)) * 15`.
 10. Beehives/Bee Nests
 The output represents the fill level, which can be in the range [0,5].
 11. Respawn Anchors
