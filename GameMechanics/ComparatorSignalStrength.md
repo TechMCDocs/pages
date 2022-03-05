@@ -74,7 +74,7 @@ The output represents which page the book is on as a fraction of 15, where the f
 10. Beehives/Bee Nests
 The output represents the fill level, which can be in the range [0,5].
 11. Respawn Anchors
-The output is `max(0,4*#charges-1)`.
+The output is `max(0, 4 * number_of_charges - 1)`.
 12. Skulk Sensors
 Comparators will output a different signal according to which sound the sensor detected. The current values are not yet final, so they will not be listed here.
 13. Other Redstone Components
