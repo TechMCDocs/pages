@@ -26,6 +26,7 @@ The list of normal containers and their inventory sizes are as follows:
 |Dropper, Dispenser|9|
 |Chest, Trapped Chest, Barrel, Shulker Box|27|
 |Double Chest, Double Trapped Chest|54|
+
 *The number of slots in a brewing stand was changed from 4 to 5 in the 1.9 release with the addition of the blaze powder mechanic.
 
 ## Other Sources
