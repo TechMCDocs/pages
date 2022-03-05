@@ -56,6 +56,7 @@ This method is called in `MinecraftServer.tick()`
 ## ServerWorld.tick()
 `net.minecraft.server.ServerWorld.tick`
 This method is called in `MinecraftServer.tickWorlds()`
+The following actions/processes are performed during every tick:
 ### Tick world Border
 ### Weather:
 - Rain
