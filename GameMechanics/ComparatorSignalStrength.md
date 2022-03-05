@@ -89,4 +89,4 @@ Given multiple redstone inputs, a comparator will take the one with the maximum 
 3. Component Signal Strength Priority: Comparators will prioritize based on directional update order.
 4. Comparison/Subtraction Priority: Comparators will use the largest of the two side values.
 5. Comparison Logic: Comparators will always output zero if the back input is less than at least one of the side inputs.
-6. Subtraction Logic: Comparators will output according to the rule: `out = max(0,in - max(left,right))`.
+6. Subtraction Logic: Comparators will output according to the rule: `out = max(0, in - max(left, right))`.
