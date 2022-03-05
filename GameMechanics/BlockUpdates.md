@@ -1,5 +1,3 @@
-
-
 ---
 title: Block updates and update detectors
 description: Description and usage of block updates and update detectors
@@ -7,12 +5,12 @@ description: Description and usage of block updates and update detectors
 
 # block updates and update detectors
 
-Minecraft has a game mechanic called Updates. Redstone Components, liquids, sand, and many other things rely on these to determine if something needs to be done.
-When you flick a lever adjacent to a trapdoor, the trapdoor will change state. It receives Block Updates, which make it see if it's not in the state it should be in, and then it changes state to the state it thinks it should be. 
+Minecraft has a game mechanic called Updates. Redstone Components, liquids, sand, and many other things rely on these to determine if something needs to be done.  
+When you flick a lever adjacent to a trapdoor, the trapdoor needs to change state. It receives a Block Update from the lever, which make it see if it's not in the state it should be in, and then it changes state to the state it thinks it should be. 
 
-However, in certain cases, something affected by updates will be in a condition where it should do something, but needs an update to realize that it needs to do something, despite the update not being what made it need to do something.  While some of these may seem like bugs, with some having been reported on the bug tracker, many are just part of maintaining game performance or original behavior, generally in redstone where it's frequently used.
+However, in certain cases, something affected by updates will be in a condition where it should do something, but it has not received the update it needs to realize this. While some of these may seem like bugs, with some having been reported on the bug tracker, many are just part of maintaining game performance or original behavior, generally in redstone where it's frequently used.
 
-In the code block updates are a call that execute a function specific to the block. This call itself can send other block updates if the block changed and need to update neighboring blocks. This create a recursive call and stop until there no block to update. Each call in another call add memory in the program stack. If the calls go too far in depth, it will consume all the memory in the stack and create a stack overflow error, causing update suppression.
+In the code block updates are a call that execute a function specific to the block. This call itself can send other block updates if the block changed and need to update neighboring blocks. This will create a recursive call that will continue until there are no more blocks to update. Each call within another call adds memory in the program stack. If the calls go too far in depth, it will consume all the memory in the stack and create a stack overflow error, causing update suppression.
 
 To make a block update detector you may simply place a sticky piston facing up, with a single slime block on top of the piston and a redstone block on top of the slime block. Then when a block update occurs on the piston it will extend and then retract unless further updated.
 
@@ -56,30 +54,29 @@ Comparator updates can be detected only with a comparator, and only if the compa
 ## Block update detection
 A block which is in a state where it will react to block updates is called "Budded". BUDs are redstone contraptions which react to block updates and reset after receiving block updates. There are circumstances which will lead to a block being budded which are not practical to be reset and are not addressed here.
 1. For solely block updates:
-Examples:
-- For some redstone components: 
-- - Pistons can be budded by being unable to extend upon being powered, or when retracting into a powered position where they cannot extend.
-Droppers, Dispensers, and pistons can be budded by Quasi Connectivity.
-Powered rails and activator rails can become budded due to their circumstances of deciding when they are no longer powered.
-In the case of a piston pushing what was powering it, before the piston finishing extending.
-- - Rails may be budded for which direction or slope they need to be, specifically with moving rails around.
-- For all redstone component that react to received power:
-- - By moving or removing a detector rail into/out of a location where it would power something through the block it's on, as that does not send non adjacent updates so long as it doesn't change powered state.
-- - By powered redstone dust changing its direction, making redstone components budded by the direction change sending no block updates.
-- - By a target block reaching a destination after having a tile tick sending no updates on reaching the destination going into a location where it would be powered by redstone dust, ect. 
+   - For some redstone components: 
+   - Pistons can be budded by being unable to extend upon being powered, or when retracting into a powered position where they cannot extend.
+   - Droppers, Dispensers, and pistons can be budded by Quasi Connectivity.
+   - Powered rails and activator rails can become budded due to their circumstances of deciding when they are no longer powered.
+   - In the case of a piston pushing what was powering it, before the piston finishing extending.
+   - Rails may be budded for which direction or slope they need to be, specifically with moving rails around.
+   - For all redstone component that react to received power:
+   - By moving or removing a detector rail into/out of a location where it would power something through the block it's on, as that does not send non adjacent updates so long as it doesn't change powered state.
+   - By powered redstone dust changing its direction, making redstone components budded by the direction change sending no block updates.
+   - By a target block reaching a destination after having a tile tick sending no updates on reaching the destination going into a location where it would be powered by redstone dust, ect. 
 
 2. For solely state updates:
-- Observers, from the face, will react to them.
-- LUDs featuring waterlogged blocks
-- Falling block floating setups, such as ones made from how a sticky piston failing to retract a slime structure sends no updates.
-- Scaffolding which hasn't realized it's on an observer or target block due to them being moved after reaching a destination sending no updates.
+   - Observers, from the face, will react to them.
+   - LUDs featuring waterlogged blocks
+   - Falling block floating setups, such as ones made from how a sticky piston failing to retract a slime structure sends no updates.
+   - Scaffolding which hasn't realized it's on an observer or target block due to them being moved after reaching a destination sending no updates.
 
 3. For block updates and state updates:
-- LUDs not featuring waterlogged blocks react to both of these
-- Floating falling blocks, with 
+   - LUDs not featuring waterlogged blocks react to both of these
+   - Floating falling blocks, with 
 
 4. For comparator updates and block updates:
-- Chests being locked so a comparator can no longer read them, either by a solid block on top or some blocks, such as cauldrons being removed non adjacently
-- A comparator budded with a general bud technique
-See also:
- https://minecraft.fandom.com/wiki/Tutorials/Comparator_update_detector
+   - Chests being locked so a comparator can no longer read them, either by a solid block on top or some blocks, such as cauldrons being removed non adjacently
+   - A comparator budded with a general bud technique
+## See also:
+[https://minecraft.fandom.com/wiki/Tutorials/Comparator_update_detector](https://minecraft.fandom.com/wiki/Tutorials/Comparator_update_detector)
