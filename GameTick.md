@@ -2,20 +2,21 @@
 title: Game Tick
 description: All the information about the tick phases
 ---
+
 {% include subpages.html %}
 
-# tick
+# Tick
 
 A tick is a part of the game loop where the game logic is processed.
 Many different things are done in a tick, and some of them a grouped in "tick phases."
 The ones commonly used for redstone are theses:
 
 1. Block/fluid tile ticks
-2. chunkManager tick
-3. blockevent processing
-4. regular entities ticking
-5. block entities ticking
-6. player actions and other sheduled tasks
+2. ChunkManager tick
+3. BlockEvent processing
+4. Regular entities ticking
+5. Block entities ticking
+6. Player actions and other scheduled tasks
 
 Here is a detailed breakdown of the server tick
 ## runServer()
@@ -27,7 +28,7 @@ The main loop:
 - If the server is running, check if the server can keep up (<=50mspt), and if it can't (>50mspt) log a warning.
 - Create a new tick monitor
 - Start the tick
-- Call `net.minecraft.server.MinecraftServer.tick`Wait for the next tick
+- Call `net.minecraft.server.MinecraftServer.tick` Wait for the next tick
 - End the tick and stop the tick monitor
 
 If an exception occurs this loop will shut down the server and try to create and save a crash report.
