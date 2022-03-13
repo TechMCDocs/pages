@@ -451,7 +451,7 @@ Call `this.navigation` which is an `EntityNavigation` object.
 3. if the mob is at a valid position continue following the path
 4. if the path is finished go to the next one
 
-#### Mob Tick
+#### [Mob Tick](https://techmcdocs.github.io/pages/GameTick/MobTick/)
 This method is different for each mob and will be addressed for each mob specifically.
 
 #### Move
