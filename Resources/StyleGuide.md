@@ -58,8 +58,3 @@ If there is only one of a thing in intended to be in a world then it is a proper
 - Information does not require sources if it can directly be seen in-game or are otherwise obvious.
 - Other information that is not widely known, must be sourced with a proper reference.
 - Do _not_ add content to an article without a proper source unless that content is obvious.
-
-
-# TO ADD:
-What to call the wiki <br>
-The rest of the old style guide
