@@ -2,9 +2,10 @@
 title: Game Tick
 description: All the information about the tick phases
 ---
+
 {% include subpages.html %}
 
-# Game Tick
+# Tick
 
 A gametick (commonly abbreviated "gt", or simply "tick") is a part of the game loop where the game logic is processed.
 Many different things are done in a tick, they are grouped into what we call tick phases.
@@ -12,11 +13,11 @@ Many different things are done in a tick, they are grouped into what we call tic
 These are the ones commonly used for technical Minecraft:
 
 1. Block/fluid tile ticks
-2. chunkManager tick
-3. blockevent processing
-4. regular entities ticking
-5. block entities ticking
-6. player actions and other sheduled tasks
+2. ChunkManager tick
+3. BlockEvent processing
+4. Regular entities ticking
+5. Block entities ticking
+6. Player actions and other scheduled tasks
 
 Here is a detailed breakdown of the server tick:
 

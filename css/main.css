@@ -180,3 +180,18 @@ img {
     max-height: 70%;
     display: block;
 }
+
+label {
+    color: #ffffff
+}
+
+.navbar-nav .nav-item.active .nav-link,
+.navbar-nav .nav-item:hover .nav-link,
+.navbar-nav .nav-item .nav-link {
+    color: #ffffff;
+}
+
+code {
+    background-color: silver;
+    color: black;
+}
