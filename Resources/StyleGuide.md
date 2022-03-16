@@ -50,7 +50,7 @@ If there is only one of a thing in intended to be in a world then it is a proper
 ## Commands 
 - Commands should be in code blocks made with backticks \`.
 - Literal keywords that must be typed in chat do not have any brackets for formatting applied (e.g., `/data merge`).
-- A list of valid keywords should be placed in parentheses with each option separated by a pipe (e.g., (get|merge|set|remove).
+- A list of valid keywords should be placed in parentheses with each option separated by a pipe (e.g., `(get|merge|set|remove)`.
 - Variables must be inside angle brackets (e.g., `\<target\>`).
 - Optional content must be inside square brackets, but these brackets should not replace any angle brackets (e.g., `[\<scale\>]` is an optional variable whereas `[scale]` is an optional keyword)
 
