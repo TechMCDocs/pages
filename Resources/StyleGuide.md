@@ -14,9 +14,32 @@ The style of this Wiki should follow Wikipedia's [Manual of Style](https://en.wi
  - Articles should pertain to Technical Minecraft in some way. 
  - Articles should not be about people or communities.
  
-## Historical Content
-- Articles should contain only information that is relevant to the latest version of Minecraft.
-- Any content that is outdated should be moved to the History section of the article.
+## Version Specific Content
+Version specific information should be marked with the correct version range. This allows users to filter by Minecraft version. For example:
+```html
+<mc-version-block range=">=1.13">
+This is a 1.13+ only paragraph. 
+</mc-version-block>
+
+This is a paragraph<mc-version range=">=1.13"> with some inline 1.13+ only text</mc-version>.
+```
+renders as:
+
+<mc-version-block range=">=1.13">
+This is a 1.13+ only paragraph. 
+</mc-version-block>
+
+This is a paragraph<mc-version range=">=1.13"> with some inline 1.13+ only text</mc-version>.
+
+The `range` attribute is required and accepts a version range expression; text within the element is only enabled if the range matches the version that the user currently has selected. The operators `&&` (and), `||` (or), `!` (not) and `()` parentheses are supported.
+
+If a version is in the format *A*.*b* (e.g. 1.12), then it is equivalent to *A*.*b*.x (e.g. 1.12.x) which matches any version between the first *A*.*b* snapshot and the last minor release of that version. If the version is in the format *A*.*b*.*c* (e.g. 1.12.0), then it matches only that minor version and its snapshots. If the version is in any other format (e.g. 22w11a), then it matches only that exact version. Comparison operators `=`, `>`, `>=`, `<` and `<=` are accepted; if no comparison operator is present then `=` is implied. Of course, this can be combined with `!` to produce ranges like `!=1.12`.
+
+Some examples:
+- `>=1.13`: 1.13 snapshots and later.
+- `<1.13`: Anything strictly before 1.13 snapshots (i.e. 1.12.2 and below).
+- `>=1.14.0 && <=1.14.2`: Between 1.14.0 (and its snapshots) and 1.14.2 inclusive.
+- `>=1.8 && !(>=1.9 && <=1.10)`: Anything since 1.8 (and its snapshots) except between 1.9 (and its snapshots) and 1.10.
 
 ## Keeping Articles Concise
 Here is an example a poor article with corrections. It uses a previous version of the Log article. Highlighted in <span style="background-color: rgba(252, 211, 77, 0.5)">yellow</span> is the redundant information, and in <span style="background-color: rgba(249, 168, 212, 0.5)">pink</span> the historical information. These parts should not be included in an article.
@@ -58,3 +81,10 @@ If there is only one of a thing in intended to be in a world then it is a proper
 - Information does not require sources if it can directly be seen in-game or are otherwise obvious.
 - Other information that is not widely known, must be sourced with a proper reference.
 - Do _not_ add content to an article without a proper source unless that content is obvious.
+
+## Apply for Editor Role
+You can [apply](https://forms.gle/3en2GGpVGbJobF8u9) to be an editor of the Wiki. Notify Earthcomputer on Discord once you have filled the form in. Your application will be accepted based on your trustworthiness.
+
+The Wiki Editor role will grant you direct write access to the [pages repository](https://github.com/TechMCDocs/pages). This allows you to merge pull requests. Please adhere to the following rules:
+- I may directly modify articles for minor edits only. A "minor edit" could be correcting spelling and grammar errors, adding a link, and similar. It does not include making changes to the meaning of the content. Anything more than a minor edit requires a pull request.
+- I may merge other people's pull requests if I determine that it meets the Wiki's standards. I may *not* merge my own pull requests.
