@@ -191,7 +191,18 @@ label {
     color: #ffffff;
 }
 
+/* code blocks & inline code */
 code {
-    background-color: silver;
+    background-color: lightgray;
     color: black;
+}
+
+/* code blocks */
+pre>code {
+    display: block;
+}
+
+table, th, td {
+    border: gray 1px solid;
+    border-collapse: collapse;
 }
