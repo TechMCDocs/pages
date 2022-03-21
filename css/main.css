@@ -199,10 +199,10 @@ code {
 
 /* code blocks */
 pre>code {
-    display: block;
+    display: inline-block;
 }
 
-table, th, td {
+.markdown-format :is(table, th, td) {
     border: gray 1px solid;
     border-collapse: collapse;
 }
