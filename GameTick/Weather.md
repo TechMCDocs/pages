@@ -49,4 +49,4 @@ Next in this part of the tick sleeping happens. First the time of day will be se
 In this part, if daylight cycle is enabled, the world time will be increased by one & the time of day will change.
 
 ## What about lightning strikes?
-Lightning strikes don’t happen in this part of the tick but rather in the chunk part, which is the next part we’ll cover.
+Lightning strikes don’t happen in this part of the tick but rather in the chunk part. See [Game Tick](https://techmcdocs.github.io/pages/GameTick/) for more info.

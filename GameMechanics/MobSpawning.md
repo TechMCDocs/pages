@@ -12,10 +12,15 @@ The spawning algorithm gets a set number of spawn attempts to distribute amongst
 # Valid Spawning Locations
 
 ## Spawnable blocks
-Mobs can spawn on blocks with a solid top surface.
+Mobs can spawn on most blocks with a solid top surface.
 
 ## Spawning inside other entities
-up to 1.8 monsters can't spawn inside other entities. then up to 1.14 (someone confirm this) they can again. currently they can't again. (please confirm)
+<mc-version-block range="<1.9||>=1.15">
+Monsters can't spawn inside other entities.
+</mc-version-block>
+<mc-version-block range=">=1.9&&<1.15">
+Monsters can spawn inside other entities.
+</mc-version-block>
 
 # Pack Spawning
 

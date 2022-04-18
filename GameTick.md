@@ -121,11 +121,11 @@ Called in the game loop.
 
 The only thing that will happen during this "ticking" of the world border is checking if the world border needs to change in size, and executing that.
 
-# [Weather Cycle](https://techmcdocs.github.io/pages/GameTick/Weather/)
-See separate article.
+## Weather Cycle
+See separate article: [Weather](https://techmcdocs.github.io/pages/GameTick/Weather/)
 
-# [Block & Fluid Ticks (Tile Tick Phase)](https://techmcdocs.github.io/pages/GameTick/BlockTicks/)
-See separate article.
+## Block & Fluid Ticks (Tile Tick Phase)
+See separate article: [Block Ticks](https://techmcdocs.github.io/pages/GameTick/BlockTicks/)
 
 # Handle raids
 TODO
@@ -451,7 +451,8 @@ Call `this.navigation` which is an `EntityNavigation` object.
 3. if the mob is at a valid position continue following the path
 4. if the path is finished go to the next one
 
-#### [Mob Tick](https://techmcdocs.github.io/pages/GameTick/MobTick/)
+### Mob Tick
+Main article: [Mob Tick](https://techmcdocs.github.io/pages/GameTick/MobTick/)  
 This method is different for each mob and will be addressed for each mob specifically.
 
 #### Move
