@@ -1,6 +1,6 @@
 ---
-title: Tile ticks
-description: What happen in tile tick phase?
+title: Tile Ticks
+description: What happens in tile tick phase?
 ---
 
 # tile ticks
