@@ -43,10 +43,10 @@ Now there is a `isRaining` and `isThundering` method, boh will determine if it�
 Rain will only begin to fall when the gradient is bigger than 0.2 and will only stop falling when it’s smaller than 0.2 again. In this case we’re speaking visually of course. Internally the properties are already set when the gradients start changing.
 
 ## Sleeping
-Next in this part of the tick sleeping happens. First the time of day will be set to morning if a player has just finished sleeping. It will also reset the weather if the weather cycle is enabled. Resetting the weather set `rainTime` and `thunderTime` to 0 and `raining` and `thundering` to false.
+First the time of day will be set to morning if a player has just finished sleeping. It will also reset the weather if the weather cycle is enabled. Resetting the weather set `rainTime` and `thunderTime` to 0 and `raining` and `thundering` to false.
 
 ## Daylight Cycle
-In this part, if daylight cycle is enabled, the world time will be increased by one & the time of day will change.
+If daylight cycle is enabled, the world time will be increased by one & the time of day will change.
 
 ## What about lightning strikes?
 Lightning strikes don’t happen in this part of the tick but rather in the chunk part. See [Game Tick](https://techmcdocs.github.io/pages/GameTick/) for more info.

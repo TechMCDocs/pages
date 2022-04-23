@@ -21,7 +21,7 @@ These are the ones commonly used for technical Minecraft:
 
 Here is a detailed breakdown of the server tick:
 
-# `runServer()`
+## `runServer()`
 `net.minecraft.server.MinecraftServer.runServer()`  
 This is the main server loop.
 
@@ -36,11 +36,11 @@ The main loop:
 
 If an exception occurs this loop will shut down the server and try to create and save a crash report.
 
-# `MinecraftServer.tick()`
+## `MinecraftServer.tick()`
 `net.minecraft.server.MinecraftServer.tick()`  
 This method is called in `runServer()`
 
-## Basic tick initialization:
+### Basic tick initialization:
 - Increase the number of ticks by one
 - Get the time of the start of the tick
 - Call `net.minecraft.server.MinecraftServer.tickWorlds()`
@@ -49,7 +49,7 @@ This method is called in `runServer()`
 - Update snooper if tick number is divisible by 6000
 - Calculate length of tick in milliseconds
 
-## `MinecraftServer.tickWorlds()`
+### `MinecraftServer.tickWorlds()`
 `net.minecraft.server.MinecraftServer.tickWorlds`  
 This method is called in `MinecraftServer.tick()`
 
@@ -60,32 +60,32 @@ This method is called in `MinecraftServer.tick()`
 - Update player latency
 - Refresh server GUI
 
-# `ServerWorld.tick()`
+## `ServerWorld.tick()`
 `net.minecraft.server.ServerWorld.tick`  
 This method is called in `MinecraftServer.tickWorlds()`
 
 The following actions/processes are performed during every tick:
 
-## Tick World Border
+### Tick World Border
 
-## Weather:
+### Weather:
 - Rain
 - Thunder
 - Player sleeping
 
-## Block Ticks
+### Block Ticks
 - Cleaning out the tick cache to differentiate between old ticks and ticks that still need to happen
 - Schedule a block tick if it's valid
 
-## Fluid Ticks
+### Fluid Ticks
 - Cleaning out the tick cache to differentiate between old ticks and ticks that still need to happen
 - Schedule a fluid tick if it's valid
 
-## Raids
+### Raids
 - Check if ongoing
 - Do raid stuff
 
-## Chunks
+### Chunks
 - Purge unloaded chunks
 - TACS stuff (?)
 - Tick chunks
@@ -102,36 +102,36 @@ The following actions/processes are performed during every tick:
   - Unload chunks
   - Initialize chunk cache
 
-## Block Events
+### Block Events
 - Call `synchedBlockEvent` hashmap and execute the block events stored in it
 
-## Entities
+### Entities
 - If there is an ongoing dragon fight tick the dragon
 - Check for despawn
 - Tick entities
 - Remove entities from the world
 - Actually populate the spawns in the world / load them into the world (different to the spawning in the chunk ticks)
 
-## Block Entities
+### Block Entities
 
-## Player Inputs??
+### Player Inputs??
 
-# World Border
+## World Border
 `net.minecraft.world.border.WorldBorder.tick`  
 Called in the game loop.
 
 The only thing that will happen during this "ticking" of the world border is checking if the world border needs to change in size, and executing that.
 
-## Weather Cycle
+### Weather Cycle
 See separate article: [Weather](https://techmcdocs.github.io/pages/GameTick/Weather/)
 
-## Block & Fluid Ticks (Tile Tick Phase)
+### Block & Fluid Ticks (Tile Tick Phase)
 See separate article: [Block Ticks](https://techmcdocs.github.io/pages/GameTick/BlockTicks/)
 
-# Handle raids
+## Handle raids
 TODO
 
-# Chunk Manager Tick
+## Chunk Manager Tick
 (just before block events since 1.17.1, was before tileticks)
 
 - Purge unloaded chunks
@@ -150,7 +150,7 @@ TODO
   - Unload chunks
   - Initialize chunk cache
 
-# Block Event Phase
+## Block Event Phase
 Block events are processed in this phase. This includes things such as:
 
 - Piston extension/retraction
@@ -164,7 +164,7 @@ Block events are stored in a LinkedHashSet. The game loops through block events 
 
 Blockevents are sent directly to the client the execute them also clientside.
 
-## Order of processing:
+### Order of processing:
 In the block event phase, the game calls `processSyncedBlockEvents()` from `net.minecraft.server.ServerWorld`. All block events are stored in the `synchedBlockEventQueue`. This queue is an `ObjectLinkedOpenHashSet`. This is a type specific linked hash set which uses a hash table to represent a set. For more information about hashsets see [Earthcomputer's Video](https://youtu.be/y5Cx07OHaOI). This is a linked hash set which means a list is stored as well as a hash set. This list is used for iteration.
 
 ```java
@@ -207,7 +207,7 @@ This means that a block event's hashcode depends on:
 
 After this the `onSynchedBlockEvents` method will be called. After this there are 2 possibilities. It’s either a block entity or a normal block. There is a difference between those two in what happens. More about this will be discussed later
 
-## Types, data and specifics (`addSynchedBlockEvent()`):
+### Types, data and specifics (`addSynchedBlockEvent()`):
 The order in which block events happen is both locational and directional since it is stored in a hashset.  
 Things that call `net.minecraft.server.world.serverworld.addSyncedBlockEvent`:
 
@@ -224,15 +224,15 @@ Things that call `net.minecraft.server.world.serverworld.addSyncedBlockEvent`:
 | End Gateway Block | 1    | 0                                            | after teleporting entity        |
 | Mob Spawner       | 1    | 0                                            | updating spawns                 |
 
-## What a block event does (`onSynchedBlockEvent()`):
+### What a block event does (`onSynchedBlockEvent()`):
 So now we know when a block event gets scheduled, how its hash works, what actions schedule block events etc. But we don’t yet know what it does, why block events are used etc.
 
 First the `onSynchedBlockEvents()` method from `AbstractBlock` gets called. This will then call a different method depending on if the block is a normal block or a block entity.
 
-### Block Entities:
+#### Block Entities:
 Block entities is the biggest category. Here the `onSynchedBlockEvents()` method from `BlockWithEntity` gets called. First will `super()` the method from `AbstractBlock`. This is a deprecated method and will always return false, thus won’t do anything. After this it will check if the block entity isn’t null. Now `blockEntity.onSyncedBlockEvent(type, data);` gets called. This will first call the block specific method and then `super()` some methods.
 
-### Bell Block:
+#### Bell Block:
 The bell block will ignore the block event if the type isn’t 1 (return `false`). If the type is 1 the following happens:
 - bell memories get notified. This mostly does some variable allocations
 - amount of ticks the bell is resonating is set to 0.
@@ -240,45 +240,48 @@ The bell block will ignore the block event if the type isn’t 1 (return `false`
 - ringing time gets set to 0 and ringing is set to true.
 - `true` gets returned.
 
-### Chest Block:
+#### Chest Block:
 If the type is 1, it will set `viewerCount = data` and return `true`. Otherwise it will return `false`.
 
-### End Gateway Block:
+#### End Gateway Block:
 If the type is 1, it will set the `teleportCooldown = 40` and return `true`. Else it will return `false`.
 
-### Ender Chest Block:
+#### Ender Chest Block:
 If the type is 1, it will set `viewerCount = data` and return `true`. Else it will return `false`.
 
-### Mob Spawner Block:
+#### Mob Spawner Block:
 If the type is 1 and the call is client-side, `spawn delay = min spawn delay` and `true` is returned. Else `false` is returned.
 
-### Shulker Box:
+#### Shulker Box:
 if type isn’t 1, return `false`.
 If data = 0 close the shulker box and return `true`
 if data = 1 open the shulker box and return `true`
 
-### Blocks:
+#### Blocks:
 For normal blocks it’s a little simpler. Here the block specific method gets called immediately. After this `super()` methods get called.
 
-### Comparator Block:
+#### Comparator Block:
 All the code about block events in comparator block classes doesn’t do anything. It is most likely leftover or something. There’s also no possible way to have a block event on the position of a comparator execute...
 
-### Note Block:
+#### Note Block:
 Play the note, display the particles and make the sound in game, then return `true`.
 
-### Piston Block:
+#### Piston Block:
 TODO
 
-# Entity Phase
+## Entity Phase
 
-## Handle ender dragon fight
+### Handle ender dragon fight
 
-## Regular entities
+### Regular entities
+
+// this needs to be separated into another article
+
 - Entities move
 - Entities trigger tripwire hooks
 - Entities trigger pressure plates.
 
-### Order of processing:
+#### Order of processing:
 Hierarchy:
 1. `net.minecraft.server.world.ServerWorld.tickEntity()`
 2. Entity-specific class with a `tick()` method
@@ -292,7 +295,7 @@ Hierarchy:
 …  
 More detail on this will come in the next sections:
 
-### `ServerWorld.tickEntity()`
+#### `ServerWorld.tickEntity()`
 First the game looks if the entity needs to be ticked. It doesn’t tick the entity if either the entity is an object of the player class or if `getChunkManager().shouldTickEntity(entity)` returns `false`.  
 If either of these conditions aren’t satisfied then `this.checkEntityChunkPos(entity)` is called.
 
@@ -305,17 +308,17 @@ If the entity needs to be ticked the following happens:
 
 In the following sections we’ll be looking at everything that happens in a **chronological order**
 
-### `SpecificMob.tickEntity()`
+#### `SpecificMob.tickEntity()`
 Most mobs override the `tick()` method from `MobEntity.java`. In this method the method from `MobEntity` gets supered.  
 We’ll look at specific mobs after we’ve described the general way in which mobs work.
 
-### `MobEntity.tick()`
+#### `MobEntity.tick()`
 This overrides the `tick()` method from `LivingEntity`.
 1. the `tick()` method from `LivingEntity` gets supered
 2. it checks if the instance is client or server & if it is server it will update the leash if the mob has one
 3. it will also update controls every 5 ticks, basically enabling or disabling whether the entity can take control of the mob
 
-### `LivingEntity.tick()`
+#### `LivingEntity.tick()`
 This overrides the `tick()` method from `Entity`.  
 A lot of this stuff doesn’t apply to mobs, only to players
 
@@ -335,16 +338,16 @@ A lot of this stuff doesn’t apply to mobs, only to players
 8. head turning
 9. range checks (basically makes sure tilts and angles are between -180° and 180°)
 
-### `Entity.tick()`
+#### `Entity.tick()`
 1. sets a flag if the entity is glowing
 2. the `baseTick()` method gets called.
 
-### `MobEntity.baseTick()`
+#### `MobEntity.baseTick()`
 This overrides the baseTick method from LivingEntity.
 1. `super()` method gets called
 2. does sound stuff
 
-### `LivingEntity.baseTick()`
+#### `LivingEntity.baseTick()`
 This overrides the baseTick method from Entity
 1. update hand swinging variables (old -> new)
 2. sets bed position if needed
@@ -360,7 +363,7 @@ This overrides the baseTick method from Entity
 12. status effects
 13. updating of movement and looking variables (old - > new)
 
-### `Entity.baseTick()`
+#### `Entity.baseTick()`
 This is the upper most `baseTick()` method
 1. stop riding vehicles if needed
 2. change riding cooldown
@@ -373,12 +376,12 @@ This is the upper most `baseTick()` method
 9. kill the entity if it’s y value is lower than -64
 10. set a flag for the amount of ticks it needs to stay on fire
 
-### `tickMovement()`
+#### `tickMovement()`
 This is called within `LivingEntity.tick()`  
 If it’s a passive animal the first method that will be called is the method from `net.minecraft.entity.passive.PassiveEntity`  
 If it’s not there’s a mob specific method. In the next sections i will go over all the `tickMovement()` methods from `PassiveEntity.tickMovement()` all the way up to `LivingEntity.tickMovement()`. For non passive entities the specific methods will be adressed in the sections about that mob.
 
-### `PassiveEntity.tickMovement()`
+#### `PassiveEntity.tickMovement()`
 This overrides the `tick()` method from `MobEntity`.
 1. call the `super()` method
 2. the following only happens client side:
@@ -388,7 +391,7 @@ This overrides the `tick()` method from `MobEntity`.
 3. the following only happens on the server side:
    1. sets the breeding age
 
-### `MobEntity.tickMovement()`
+#### `MobEntity.tickMovement()`
 This overrides the `tick()` method from `LivingEntity`.
 1. super the method from `LivingEntity`
 2. this happens only on the server side:
@@ -397,7 +400,7 @@ This overrides the `tick()` method from `LivingEntity`.
    - if the mob is not dead and
    - if gamerule mob griefing is true the mob will try to pick up stuff from the ground
 
-### `LivingEntity.tickMovement()`
+#### `LivingEntity.tickMovement()`
 Most of the movement stuff happens in this method.
 1. decrease `jumpingCooldown`
 2. body tracking
@@ -415,7 +418,7 @@ Most of the movement stuff happens in this method.
    2. do cramming
 10. drowning
 
-### `MobEntity.tickNewAI()`
+#### `MobEntity.tickNewAI()`
 this is being called in `LivingEntity.tickMovement()` and handles all of the AI stuff. This is separated into sections based on the profiler loggings.
 1. add to the despawn counter
 2. sensing
@@ -428,44 +431,44 @@ this is being called in `LivingEntity.tickMovement()` and handles all of the AI 
 9. look
 10. jump
 
-#### Sensing
+##### Sensing
 1. clear the visibility cache (contains visible and invisible entities)
 
-#### `targetSelector`
+##### `targetSelector`
 Here `targetSelector` gets ticked, which is a `GoalSelector` object.  
 What happens in the `GoalSelector.tick()` method:
 1. remove unnecessary goals
 2. update goals
 3. tick each goal
 
-#### `goalSelector`
+##### `goalSelector`
 Call `this.goalSelector` which is an `GoalSelector` object.  
 What happens in the `GoalSelector.tick()` method:
 1. remove unnecessary goals
 2. update goals
 3. tick each goal
 
-#### Navigation
+##### Navigation
 Call `this.navigation` which is an `EntityNavigation` object.
 1. recalculate the path if needed
 2. return if the mob is idle
 3. if the mob is at a valid position continue following the path
 4. if the path is finished go to the next one
 
-### Mob Tick
+#### Mob Tick
 Main article: [Mob Tick](https://techmcdocs.github.io/pages/GameTick/MobTick/)  
 This method is different for each mob and will be addressed for each mob specifically.
 
-#### Move
+##### Move
 Calls `MoveControl.tick()`.
 
-#### Look
+##### Look
 looking
 
-#### Jump
+##### Jump
 jumping
 
-# Tile Entity Phase
+## Tile Entity Phase
 Tile/Block entities are processed in this phase. This includes things such as:
 - Moving blocks turn into normal blocks
 - Moving blocks push entities and slime give velocity
@@ -473,12 +476,12 @@ Tile/Block entities are processed in this phase. This includes things such as:
 - Hoppers push and pull items
 - Sculk sensors activate.
 
-# Player Inputs Phase
+## Player Inputs Phase
 Player inputs are processed in this phase. This includes things such as:
 - Flipping levers
 - Pushing buttons
 - Placing blocks
 - Breaking blocks
 
-# Other Things Calculated In A tick
+## Other Things Calculated In A tick
 There are other things that are calculated in a ticks that isnt specific to a phase, for example rails and redstone dust is calculated recursivly independent from the ticks and can happen in all of them. These components are called "recursive updators" or "instant updators".
