@@ -12,7 +12,21 @@ The spawning algorithm gets a set number of spawn attempts to distribute amongst
 ## Valid Spawning Locations
 
 ### Spawnable blocks
-Mobs can spawn on most blocks with a solid top surface.
+Mobs can spawn on most blocks with a solid top surface.  
+There are however a few exceptions where some blocks are non-spawnable, despite fitting this requirement. They are listed as follows:
+- Barrier blocks
+- Bedrock
+- Beacons
+- Glass (including stained- and tinted glass)
+- Trapdoors
+
+There are also a few blocks that restrict spawning to only a few select mobs:
+- Polar bears on ice and frosted ice
+- Fire-immune mobs on magma blocks
+- Ocelots and parrots on leaves
+- Wither skeletons inside wither roses
+
+Soul sand is also spawnable, despite not having a full top surface.
 
 ### Spawning inside other entities
 <mc-version-block range="<1.9||>=1.13">
