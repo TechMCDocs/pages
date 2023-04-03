@@ -1,8 +1,9 @@
 ---
 title: Entities
-description: Information about entities in the game
+description: Information about entities and machines dealing with entities
 ---
 
-write entities description here
+# Entities
+Information about entities and machines dealing with entities
 
 {% include subpages.html %}
