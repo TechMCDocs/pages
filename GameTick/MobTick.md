@@ -3,16 +3,16 @@ title: Mob Tick
 description: Details on the tick method of specific mobs
 ---
 
-# `tick()` Method of Specific Mobs
+# The `tick()` Method of Specific Mobs
 
-## The Villager
+## Villagers
 
 ### `VillagerEntity.tick()`
-1. super call to `tick()`
-2. change `headRollingTimeLeft`
-3. decay `gossip`
+1. Super call to `tick()`
+2. Change `headRollingTimeLeft`
+3. Decay `gossip`
 
 ### `VillagerEntity.mobTick()`
-Instantiate a `raid` variable which is an object from the `Raid` class
-1. tick the brain
-2. change `levelUpTimer`
+1. Instantiate a `raid` variable which is an object from the `Raid` class.
+1. Tick the brain
+2. Change `levelUpTimer`

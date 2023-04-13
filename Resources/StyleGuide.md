@@ -7,7 +7,7 @@ description: How to write the Wiki
 
 This article aims to provide a comprehensive style guide for all Technical Minecraft Wiki articles to follow. There are often disputes over which style rule or formatting to use so an official style guide helps resolve these disputes and reach a consensus. 
 
-The style of this Wiki should follow Wikipedia's [Manual of Style](https://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style). Wikipedia already provides a general style guide, but additional guidelines are needed for articles revolving around Minecraft. As such, only guidelines pertaining to the Technical Minecraft Wiki and its basic formatting rules are included here. If any contradiction arises, this page always has precedence over its subpages and the Wikipedia style guide.
+The style of this Wiki should follow Wikipedia's [Manual of Style](https://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style). Wikipedia already provides a general style guide, but additional guidelines are needed for articles revolving around Minecraft. As such, only guidelines pertaining to the Technical Minecraft Wiki and its basic formatting rules are included here. If any contradiction arises, this page always has precedence over the Wikipedia style guide.
 
 ## Criteria for a Article
  - Articles must contain enough information to warrant a full page. If they do not have enough content, they should be merged with other similar articles.
@@ -71,11 +71,11 @@ If there is only one of a thing in intended to be in a world then it is a proper
 - Volumes should be in the order X, Y, Z, with each item separated by a multiplication sign ("×"; &times;); "4×3×2" is an area that is 4 blocks wide along the X axis, 3 along the Y axis (vertical), and 2 along the Z axis.
 
 ## Commands 
-- Commands should be in code blocks made with backticks \`.
+- Commands should be in code blocks made with backticks <code>`</code>.
 - Literal keywords that must be typed in chat do not have any brackets for formatting applied (e.g., `/data merge`).
 - A list of valid keywords should be placed in parentheses with each option separated by a pipe (e.g., `(get|merge|set|remove)`.
-- Variables must be inside angle brackets (e.g., `\<target\>`).
-- Optional content must be inside square brackets, but these brackets should not replace any angle brackets (e.g., `[\<scale\>]` is an optional variable whereas `[scale]` is an optional keyword)
+- Variables must be inside angle brackets (e.g., `<target>`).
+- Optional content must be inside square brackets, but these brackets should not replace any angle brackets (e.g., `[<scale>]` is an optional variable whereas `[scale]` is an optional keyword)
 
 ## Sources
 - Information does not require sources if it can directly be seen in-game or are otherwise obvious.

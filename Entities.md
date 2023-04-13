@@ -1,8 +1,9 @@
 ---
 title: Entities
-description: Information about entities in the game
+description: Information about entities and machines dealing with entities
 ---
 
-Information pertaining to Technical Minecraft about various entities in the game.
+# Entities
+Information about entities and machines dealing with entities
 
 {% include subpages.html %}
