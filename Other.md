@@ -3,6 +3,6 @@ title: Other
 description: Other stuff
 ---
 
-write other description here
+Things we couldn't categorize. 
 
 {% include subpages.html %}
