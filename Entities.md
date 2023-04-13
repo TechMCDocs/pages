@@ -3,6 +3,6 @@ title: Entities
 description: Information about entities in the game
 ---
 
-write entities description here
+Information pertaining to Technical Minecraft about various entities in the game.
 
 {% include subpages.html %}
