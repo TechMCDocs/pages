@@ -1,11 +1,11 @@
 ---
-title: Moving block 36
+title: Moving Block (Block 36)
 description: Mechanics around the moving piston block
 ---
 
-# Moving piston block 36
+# Moving Block (Block 36)
 
-Moving_Piston is commonly called a B36 or Block 36. This is because, before The Flattening<!--FIX: What's that?-->, it had the block ID 36. B36 is created by pistons when they push a block. The piston head also converts itself into a B36. B36 is non-solid<!--FIX:Seems to contradict the part where it says it has a hitbox--> and invisible, although it does have a hitbox.
+Moving_Piston is commonly called a B36 or Block 36. This is because before [The Flattening](https://minecraft.fandom.com/wiki/Java_Edition_1.13/Flattening) it had the block ID 36. B36 is created by pistons when they push a block. The piston head also converts itself into a B36. B36 is not conductive to redstone and it is invisible, although it does have a hitbox.
 
 ## Uses
 Special properties that B36 has which might be useful include:
@@ -13,14 +13,14 @@ Special properties that B36 has which might be useful include:
 - Having the Block Tags: dragon_immune, wither_immune;
 - Entities can see through it but cannot pathfind through it;
 - It can only be destroyed through an explosion;
-- Being unreplaceable<!--What does this mean?--> by the player
+- Being unreplaceable (cannot be mined or replaced by right-clicking with another block item) by the player
 
 ## Hitbox
 Like most blocks, the B36 has a hitbox. A B36 hitbox is very interesting as it can be offset from where the B36 is actually located. This can be seen by doing the following:
 1. Go to the world border
 2. Place a piston facing into the world border, with water on the other side.
 3. Power the piston to extend it
-4. Without unpowering the piston, break the it
+4. Without unpowering the piston, break it
 5. Notice the invisible B36 on the other side of the border, and then walk into the invisible hitbox that is still there server-side
 
 ![b36hitbox](https://cdn.discordapp.com/attachments/793179568508108820/807318838139813948/WorldBorder_B36.png)
