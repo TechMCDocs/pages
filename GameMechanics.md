@@ -1,8 +1,9 @@
 ---
 title: Game Mechanics
-description: List of difrent Game Mechanics, how they work and their usees
+description: List of different Game Mechanics, how they work, and their uses
 ---
 
-write game mechanics description here
+# Game Mechanics
+A list of mechanics, their uses, and how they work
 
 {% include subpages.html %}

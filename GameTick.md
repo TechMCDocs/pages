@@ -1,13 +1,13 @@
 ---
 title: Game Tick
-description: All the information about the tick phases
+description: How the game process things
 ---
+
+# Tick
+A gametick (commonly abbreviated "gt", or simply "tick") is a part of the game loop where the game logic is processed.
 
 {% include subpages.html %}
 
-# Tick
-
-A gametick (commonly abbreviated "gt", or simply "tick") is a part of the game loop where the game logic is processed.
 Many different things are done in a tick, they are grouped into what we call tick phases.
 
 These are the ones commonly used for technical Minecraft:

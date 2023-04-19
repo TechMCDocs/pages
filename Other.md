@@ -1,8 +1,9 @@
 ---
 title: Other
-description: Other stuff
+description: Articles that don't fall into another category
 ---
 
-write other description here
+# Other
+Information about things that don't fall into another category
 
 {% include subpages.html %}
