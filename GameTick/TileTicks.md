@@ -24,8 +24,9 @@ If you consider that a the player input phase happen at the end of a tick, then 
 
 ### Tile tick priority:
 A tile tick have a priority. If multiple tile ticks are scheduled to be executed, the tile tick with the higher priority (lower value) will execute first.
+
 | Name | Delay |
-|--|--|
+|---|---|
 | Redstone Torch | 2 |
 | Observer | 2 |
 | Dispenser | 4 |
