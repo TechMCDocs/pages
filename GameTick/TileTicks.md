@@ -14,12 +14,12 @@ In this phase the game selects scheduled tile ticks which have their processing 
 
 There are two different schedulers that get processed after one another: block tile ticks, then fluid tile ticks.
 ### Tile tick cap:
-A maximun of 65536 tile ticks can execute in one tick. The tile ticks that weren't executed in the tick they were supposed to are delayed to the next tick.
+A maximum of 65536 tile ticks can execute in one tick. The tile ticks that weren't executed in the tick they were supposed to are delayed to the next tick.
 
 ### Player input bug:
 Player input are executed after the block event phase and before the world counter increment, so if a player input creates a tile tick, it will schedule a tile tick starting from the current tick, and execute the block event phase only in the next tick.
 Whether the player inputs start at the end of a tick or at the beginning of the next tick is not really defined, because it depends where you split ticks.
-If you consider that a the player input phase happens at the begining of a tick, then tiles tick scheduled by a player input lose 1 gametick of delay.
+If you consider that a the player input phase happens at the beginning of a tick, then tiles tick scheduled by a player input lose 1 gametick of delay.
 If you consider that a the player input phase happen at the end of a tick, then blockevents created by a player input will execute(extend a piston for example) only in the next tick.
 
 ### Tile tick priority:
