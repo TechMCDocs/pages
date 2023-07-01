@@ -47,7 +47,7 @@ If you consider that a the player input phase happen at the end of a tick, then 
 | Dragon Egg | 5 |
 | Composter | 20 |
 | Big Dripleaf | 10, 10, 100 |
-| Big Dripleaf Stem, weeping vines, weeping vine plants, twisting vine, twisting vine plants, sugar cane, kelp, kelp plant, bamboo, chrous plant, chrous flower, cactus, cave vines, cave vines plant | 1 |
+| Big Dripleaf Stem, Weeping Vines, Weeping Vine Plants, Twisting Vine, Twisting Vine Plants, Sugar Cane, Kelp, Kelp Plant, Bamboo, Chrous Plant, Chrous Flower, Cactus, Cave Vines, Cave Vines Plant | 1 |
 | Command Block | 1 |
 
 ### Tile tick priority:
