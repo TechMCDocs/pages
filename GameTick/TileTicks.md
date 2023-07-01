@@ -43,15 +43,11 @@ If you consider that a the player input phase happen at the end of a tick, then 
 | Detector Rail | 20 |
 | Tripwire Hook | 10 |
 | Tripwire | 10 |
-
 | Sand, Anvil, Concrete powder | 2 |
 | Dragon Egg | 5 |
-
 | Composter | 20 |
-
 | Big Dripleaf | 10, 10, 100 |
 | Big Dripleaf Stem, weeping vines, weeping vine plants, twisting vine, twisting vine plants, sugar cane, kelp, kelp plant, bamboo, chrous plant, chrous flower, cactus, cave vines, cave vines plant | 1 |
-
 | Command Block | 1 |
 
 ### Tile tick priority:
