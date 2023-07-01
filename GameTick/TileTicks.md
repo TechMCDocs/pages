@@ -48,6 +48,7 @@ If you consider that a the player input phase happen at the end of a tick, then 
 | Composter | 20 |
 | Big Dripleaf | 10, 10, 100 |
 | Big Dripleaf Stem, Weeping Vines, Weeping Vine Plants, Twisting Vine, Twisting Vine Plants, Sugar Cane, Kelp, Kelp Plant, Bamboo, Chrous Plant, Chrous Flower, Cactus, Cave Vines, Cave Vines Plant | 1 |
+| Leaves | 1 |
 | Command Block | 1 |
 
 ### Tile tick priority:
