@@ -22,25 +22,38 @@ Whether the player inputs start at the end of a tick or at the beginning of the 
 If you consider that a the player input phase happens at the beginning of a tick, then tiles tick scheduled by a player input lose 1 gametick of delay.
 If you consider that a the player input phase happen at the end of a tick, then blockevents created by a player input will execute(extend a piston for example) only in the next tick.
 
-### Tile tick priority:
-A tile tick have a priority. If multiple tile ticks are scheduled to be executed, the tile tick with the higher priority (lower value) will execute first.
-
+### Delay length:
 | Name | Delay |
 |---|---|
+| Repeater | 2, 4, 6, 8 |
+| Comparator | 2 |
 | Redstone Torch | 2 |
 | Observer | 2 |
+| Lectern | 2 |
+| Lightning Rod | 8 |
+| Target | 8 |
 | Dispenser | 4 |
 | Dropper | 4 |
-| Command Block | 1 |
-| Sand | 2 |
+| Redstone Lamp | 4 |
 | Stone Button | 20 |
 | Wooden Button | 30 |
-| Pressure Plate | 20 |
+| Stone Pressure Plate | 20 |
+| Wooden Pressure Plate | 30 |
+| Weighted Pressure Plate | 10 |
 | Detector Rail | 20 |
 | Tripwire Hook | 10 |
-| Redstone Lamp | 4 |
-| Repeater | 2 |
-| Comparator | 2 |
+| Tripwire | 10 |
+| Sand, Anvil, Concrete powder | 2 |
+| Dragon Egg | 5 |
+| Composter | 20 |
+| Big Dripleaf | 10, 10, 100 |
+| Big Dripleaf Stem, Weeping Vines, Weeping Vine Plants, Twisting Vine, Twisting Vine Plants, Sugar Cane, Kelp, Kelp Plant, Bamboo, Chrous Plant, Chrous Flower, Cactus, Cave Vines, Cave Vines Plant | 1 |
+| Leaves | 1 |
+| Command Block | 1 |
+
+### Tile tick priority:
+A tile tick have a priority. If multiple tile ticks are scheduled to be executed, the tile tick with the higher priority (lower value) will execute first.
+It is only relevant to repeater and comparator, as everyhting else has default priority of 0.
 
 ```
 SCHEDULED TICK PRIORITIES
