@@ -5,7 +5,7 @@ description: Mechanics around the moving piston block
 
 # Moving Block (Block 36)
 
-Moving_Piston is commonly called a B36 or Block 36. This is because before [The Flattening](https://minecraft.fandom.com/wiki/Java_Edition_1.13/Flattening) it had the block ID 36. B36 is created by pistons when they push a block. The piston head also converts itself into a B36. B36 is not conductive to redstone and it is invisible, although it does have a hitbox.
+Moving_Piston is commonly called a B36 or Block 36. This is because before [The Flattening](https://minecraft.wiki/w/Java_Edition_1.13/Flattening) it had the block ID 36. B36 is created by pistons when they push a block. The piston head also converts itself into a B36. B36 is not conductive to redstone and it is invisible, although it does have a hitbox.
 
 ## Uses
 Special properties that B36 has which might be useful include:
