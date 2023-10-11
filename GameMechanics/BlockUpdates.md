@@ -79,4 +79,4 @@ A block which is in a state where it will react to block updates is called "Budd
    - Chests being locked so a comparator can no longer read them, either by a solid block on top or some blocks, such as cauldrons being removed non adjacently
    - A comparator budded with a general bud technique
 ## See also:
-[https://minecraft.fandom.com/wiki/Tutorials/Comparator_update_detector](https://minecraft.fandom.com/wiki/Tutorials/Comparator_update_detector)
+[https://minecraft.wiki/w/Tutorials/Comparator_update_detector](https://minecraft.wiki/w/Tutorials/Comparator_update_detector)
