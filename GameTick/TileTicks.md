@@ -12,7 +12,7 @@ When the tile tick is executed, the block executes an action depending on its ty
 In this phase the game selects scheduled tile ticks which have their processing tick (the result of taking the tick number(world counter) from the tick the update was scheduled in + the delay of the tile tick) smaller than or equal to the current tick, and move them to a different list, where they are executed. Some redstone components such as observers and lamps doesn't check if there is a tiletick in the executing list before scheduling a new one:  
 [[MC-189954] Observers react to updates if they already have a scheduled tick](https://bugs.mojang.com/browse/MC-189954).
 
-There are two different schedulers that get processed after one another: block tile ticks, then fluid tile ticks.
+There are two different schedulers that get processed after one another: block ticks, then fluid ticks.
 ### Tile tick cap:
 A maximum of 65536 tile ticks can execute in one tick. The tile ticks that weren't executed in the tick they were supposed to are delayed to the next tick.
 
@@ -26,35 +26,38 @@ If you consider that a the player input phase happen at the end of a tick, then 
 
 | Name | Delay |
 |---|---|
+| Tall Plants (see below) | 1 |
+| Leaves | 1 |
+| Command Blocks | 1 |
+| Sand, Anvil, Concrete powder | 2 |
 | Repeater | 2, 4, 6, 8 |
 | Comparator | 2 |
 | Redstone Torch | 2 |
 | Observer | 2 |
 | Lectern | 2 |
-| Lightning Rod | 8 |
-| Target | 8 |
 | Dispenser | 4 |
 | Dropper | 4 |
 | Redstone Lamp | 4 |
-| Stone Button | 20 |
-| Wooden Button | 30 |
-| Stone Pressure Plate | 20 |
-| Wooden Pressure Plate | 30 |
-| Weighted Pressure Plate | 10 |
-| Detector Rail | 20 |
+| Dragon Egg | 5 |
+| Water | 5 |
+| Lightning Rod | 8 |
+| Target | 8 |
 | Tripwire Hook | 10 |
 | Tripwire | 10 |
-| Sand, Anvil, Concrete powder | 2 |
-| Dragon Egg | 5 |
+| Weighted Pressure Plate | 10 |
+| Stone Button & Pressure Plate | 20 |
+| Detector Rail | 20 |
 | Composter | 20 |
+| Wooden Button & Pressure Plate | 30 |
+| Lava | 30 |
 | Big Dripleaf | 10, 10, 100 |
-| Big Dripleaf Stem, Weeping Vines, Weeping Vine Plants, Twisting Vine, Twisting Vine Plants, Sugar Cane, Kelp, Kelp Plant, Bamboo, Chrous Plant, Chrous Flower, Cactus, Cave Vines, Cave Vines Plant | 1 |
-| Leaves | 1 |
-| Command Block | 1 |
 
-### Tile tick priority:
-A tile tick have a priority. If multiple tile ticks are scheduled to be executed, the tile tick with the higher priority (lower value) will execute first.
-It is only relevant to repeater and comparator, as everyhting else has default priority of 0.
+* Tall plants : Big Dripleaf Stem, Bamboo, Cactus, Sugar Cane, Weeping Vines, Weeping Vine Plants, Twisting Vine, Twisting Vine Plants, Kelp, Kelp Plant, Chrous Plant, Chrous Flower, Cave Vines, Cave Vines Plant.  
+* Water and lava use fluid ticks.
+
+### Tile tick priority (TTP):
+A tile tick have a priority. If multiple tile ticks are scheduled to be executed, the tile tick with the higher priority (lower value) will execute first.  
+TTP is only relevant to repeater and comparator, as everyhting else has priority of 0.
 
 ```
 SCHEDULED TICK PRIORITIES
